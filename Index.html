@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Happy Birthday Noor</title>
+
+<style>
+
+body{
+margin:0;
+background:linear-gradient(black,#1a0033);
+color:white;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+
+.screen{
+display:none;
+padding-top:120px;
+}
+
+.active{
+display:block;
+}
+
+button{
+padding:14px 35px;
+font-size:20px;
+background:#ff4da6;
+border:none;
+border-radius:12px;
+color:white;
+cursor:pointer;
+margin-top:30px;
+}
+
+.balloon{
+position:absolute;
+font-size:40px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{bottom:-50px}
+100%{bottom:110%}
+}
+
+.star{
+position:absolute;
+color:white;
+animation:twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+0%{opacity:0.2}
+50%{opacity:1}
+100%{opacity:0.2}
+}
+
+.firework{
+position:absolute;
+font-size:30px;
+animation:explode 1.5s infinite;
+}
+
+@keyframes explode{
+0%{transform:scale(0)}
+50%{transform:scale(1.5)}
+100%{transform:scale(0)}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="s1" class="screen active">
+<h1>🌙 Hey Noor</h1>
+<p>Someone made a little universe for your birthday.</p>
+<button onclick="next(2)">Start 🎁</button>
+</div>
+
+<div id="s2" class="screen">
+<h1>🎈 Balloons</h1>
+<p>First... some balloons for your day.</p>
+<button onclick="next(3)">Next</button>
+</div>
+
+<div id="s3" class="screen">
+<h1>🎂 Happy Birthday Noor</h1>
+<p>Hope today is wonderful.</p>
+<button onclick="next(4)">Next</button>
+</div>
+
+<div id="s4" class="screen">
+<h1>✨ Make a Wish</h1>
+<p>May your year be full of amazing moments.</p>
+<button onclick="next(5)">Next</button>
+</div>
+
+<div id="s5" class="screen">
+<h1>🎆 Surprise</h1>
+<p>Have an incredible birthday Noor!</p>
+</div>
+
+<script>
+
+function next(n){
+
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"))
+
+document.getElementById("s"+n).classList.add("active")
+
+if(n==2){
+for(let i=0;i<12;i++){
+let b=document.createElement("div")
+b.className="balloon"
+b.innerHTML="🎈"
+b.style.left=Math.random()*100+"%"
+document.body.appendChild(b)
+}
+}
+
+if(n==4){
+for(let i=0;i<60;i++){
+let star=document.createElement("div")
+star.className="star"
+star.innerHTML="★"
+star.style.left=Math.random()*100+"%"
+star.style.top=Math.random()*100+"%"
+document.body.appendChild(star)
+}
+}
+
+if(n==5){
+for(let i=0;i<20;i++){
+let f=document.createElement("div")
+f.className="firework"
+f.innerHTML="🎆"
+f.style.left=Math.random()*100+"%"
+f.style.top=Math.random()*100+"%"
+document.body.appendChild(f)
+}
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
