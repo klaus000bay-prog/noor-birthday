@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+font-family: 'Segoe UI', sans-serif;
+background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);
+color:white;
+text-align:center;
+}
+
+/* stars background */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+opacity:0.8;
+animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3}
+to{opacity:1}
+}
+
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+max-width:700px;
+}
+
+h1{
+font-size:55px;
+letter-spacing:2px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #fff;}
+to{ text-shadow:0 0 25px #ff9bd3;}
+}
+
+p{
+font-size:20px;
+margin-top:10px;
+}
+
+button{
+margin-top:25px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+background:white;
+color:#ff4f81;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.message{
+margin-top:35px;
+font-size:22px;
+display:none;
+line-height:1.6;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+color:#ff7aa2;
+animation: float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1}
+100%{transform:translateY(-10vh);opacity:0}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Happy Birthday</h1>
+
+<p>Today the universe celebrates someone special.</p>
+
+<button onclick="reveal()">Tap Your Surprise</button>
+
+<div class="message" id="msg">
+
+<p>
+
+I didn’t know what gift could match someone like you…  
+So I made something small but meaningful.
+
+A little place on the internet  
+that exists only to celebrate you.
+
+Your smile brightens days  
+without you even realizing it.
+
+I hope this year brings you  
+peace, happiness, and beautiful moments.
+
+Never forget that you are special.
+
+✨ Happy Birthday ✨
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+/* stars */
+
+for(let i=0;i<120;i++){
+
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(star);
+
+}
+
+/* floating hearts */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=4+Math.random()*3+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+
+}
+
+setInterval(createHeart,400);
+
+
+/* reveal message + confetti */
+
+function reveal(){
+
+document.getElementById("msg").style.display="block";
+
+for(let i=0;i<120;i++){
+
+const conf=document.createElement("div");
+
+conf.style.position="absolute";
+conf.style.width="8px";
+conf.style.height="8px";
+conf.style.background="white";
+
+conf.style.left=Math.random()*100+"vw";
+conf.style.top="-10px";
+
+conf.style.transition="3s";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{
+conf.style.top="100vh";
+conf.style.transform="rotate(720deg)";
+},50);
+
+setTimeout(()=>{
+conf.remove();
+},3000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
