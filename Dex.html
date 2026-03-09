@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sadaf (Noor)</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* container */
+
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+max-width:700px;
+}
+
+/* title */
+
+h1{
+font-size:52px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #fff}
+to{text-shadow:0 0 30px #ff9bd3}
+}
+
+/* button */
+
+button{
+margin-top:20px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4f81;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* cake */
+
+.cake{
+font-size:55px;
+margin-top:10px;
+animation:bounce 1s infinite alternate;
+}
+
+@keyframes bounce{
+from{transform:translateY(0)}
+to{transform:translateY(-10px)}
+}
+
+/* message */
+
+.message{
+margin-top:25px;
+font-size:22px;
+display:none;
+line-height:1.7;
+}
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+font-size:22px;
+color:#ff7aa2;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-10vh)}
+}
+
+/* shooting stars */
+
+.shoot{
+position:absolute;
+width:2px;
+height:80px;
+background:linear-gradient(white,transparent);
+transform:rotate(45deg);
+animation:shoot 2s linear infinite;
+}
+
+@keyframes shoot{
+0%{top:-100px;left:0}
+100%{top:100vh;left:100vw}
+}
+
+/* gallery */
+
+.gallery{
+margin-top:40px;
+display:none;
+}
+
+.gallery img{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:15px;
+margin:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>Happy Birthday Sadaf (Noor)</h1>
+
+<p>The universe celebrates you today ✨</p>
+
+<div class="cake">🎂</div>
+
+<button onclick="reveal()">Tap Your Surprise</button>
+
+<div class="message" id="msg">
+<p id="text"></p>
+</div>
+
+<div class="gallery" id="gallery">
+<img src="Sadaf1.jpg">
+<img src="Sadaf2.jpg">
+<img src="Sadaf3.jpg">
+</div>
+
+</div>
+
+<script>
+
+/* floating hearts */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=4+Math.random()*3+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),7000);
+
+}
+
+setInterval(createHeart,400);
+
+
+/* shooting stars */
+
+function createStar(){
+
+const star=document.createElement("div");
+star.className="shoot";
+
+star.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(star);
+
+setTimeout(()=>star.remove(),2000);
+
+}
+
+setInterval(createStar,3000);
+
+
+/* message */
+
+const message=`Sadaf,
+
+Today isn't just your birthday.
+
+It's the day someone truly special
+came into this world.
+
+Your smile makes days brighter.
+Your presence makes moments beautiful.
+
+So I made this little place on the internet
+just to celebrate you.
+
+Happy Birthday Noor ✨`;
+
+let i=0;
+
+function typeWriter(){
+if(i<message.length){
+document.getElementById("text").innerHTML+=message.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
+}
+
+/* reveal */
+
+function reveal(){
+
+document.getElementById("msg").style.display="block";
+document.getElementById("gallery").style.display="block";
+
+typeWriter();
+
+/* confetti */
+
+for(let i=0;i<120;i++){
+
+const conf=document.createElement("div");
+
+conf.style.position="absolute";
+conf.style.width="8px";
+conf.style.height="8px";
+conf.style.background="white";
+
+conf.style.left=Math.random()*100+"vw";
+conf.style.top="-10px";
+
+conf.style.transition="3s";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{
+conf.style.top="100vh";
+conf.style.transform="rotate(720deg)";
+},50);
+
+setTimeout(()=>conf.remove(),3000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
